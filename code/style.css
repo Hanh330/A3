@@ -1,0 +1,553 @@
+/* FONT DEFINITIONS */
+@font-face {
+    font-family: 'Impact';
+    src: url('./fonts/impact.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Impact Label Reversed';
+    src: url('./fonts/Impact\ Label\ Reversed.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* RESET & VARIABLES */
+:root {
+    --bg-color: #050505;
+    --text-color: #ffffff;
+    --font-heading: 'Impact', 'Arial Black', sans-serif;
+    --font-body: 'Impact Label Reversed', 'Courier New', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+
+    background-image: repeating-radial-gradient(
+        circle at 50% 50%,
+        transparent 0,
+        transparent 30px,
+        rgba(255, 255, 255, 0.15) 31px,
+        rgba(255, 255, 255, 0.15) 32px
+    );
+    background-attachment: fixed;
+    background-position: center;
+}
+
+h1, h2, h3, .heading-font {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+p {
+    font-size: 11px;
+    line-height: 1.3;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+/* LAYOUT CONTAINER (DESKTOP 1440PX) */
+.container {
+    width: 100%;
+    max-width: 1440px;
+    padding-inline: 60px;
+    padding-top: 70px;
+    margin: 0 auto;
+}
+
+/* HEADER & NAVIGATION */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 80px;
+}
+
+.header-left {
+    width: 60%;
+}
+
+.header-left h1 {
+    font-size: 48px;
+    margin-bottom: 40px;
+}
+
+.header-left p {
+    font-size: 24px;
+    max-width: 350px;
+    line-height: 1.1;
+}
+
+.hamburger {
+    display: none;
+    font-size: 30px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.desktop-nav {
+    display: flex;
+    gap: 40px;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    font-size: 24px;
+    letter-spacing: 1px;
+
+    position: fixed;
+    top: 50px;    /* Bằng với padding-top của .container để thẳng hàng với tiêu đề lúc chưa scroll */
+    right: 40px;  /* Bằng với padding-inline của .container */
+    z-index: 1000; /* Luôn nằm trên các thành phần khác khi cuộn */
+    
+    /* Thêm một chút nền mờ phía sau chữ để không bị trùng lặp chữ khi cuộn qua nội dung khác */
+    background-color: rgba(5, 5, 5, 0.7);
+    padding: 5px 10px;
+    backdrop-filter: blur(3px);
+}
+
+.desktop-nav a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.desktop-nav a:hover {
+    opacity: .7;
+}
+
+/* HERO SECTION - FIXED ALIGNMENT */
+.hero {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; 
+    margin-bottom: 200px;
+    gap: 20px; 
+}
+
+.hero-left {
+    width: auto; 
+}
+
+.hero-left h2 {
+    font-size: 90px;
+    line-height: 0.9;
+    text-align: right;
+    transform: translateY(31%);
+    margin-right: 15px;
+}
+
+.hero-right {
+    width: auto; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.hero-right h2 {
+    font-size: 90px;
+}
+
+.small-title {
+    font-size: 48px !important;
+    margin-top: 10px;
+}
+
+.lips-image {
+    width: 100%;
+    max-width: 393px;
+    height: auto;
+    aspect-ratio: 393/385;
+    margin: 20px 0;
+}
+
+.lips-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ABOUT SECTION */
+.about-section {
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 250px;
+    scroll-margin-top: 130px;
+}
+
+.about-section > div:first-child {
+    width: 50%;
+}
+
+.illustration {
+    width: 100%;
+    height: auto;
+    transform: scale(2);
+    object-fit: cover;
+    display: block;
+}
+
+.about-text {
+    width: 50%;
+}
+
+.about-text h2 {
+    font-size: 56px;
+    margin-bottom: 20px;
+    line-height: 1;
+}
+
+.about-text p {
+    font-size: 20px;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+/* SHOWCASE SECTION */
+.showcase {
+    margin-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    scroll-margin-top: 40px;
+}
+
+.showcase-item {
+    width: 50%;
+    margin-bottom: 60px;
+}
+
+.showcase-item h3 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.showcase-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover; 
+    margin-bottom: 15px;
+    opacity: 0.5;
+    border: 2px solid white;
+    display: block;
+    transition: opacity 0.3s ease; 
+}
+
+.showcase-image:hover {
+    opacity: 1; 
+}
+
+.showcase-item p {
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+/* FOOTER */
+footer {
+    padding-bottom: 60px;
+}
+
+footer h3 {
+    font-size: 32px;
+    margin-top: 25px;
+    margin-bottom: 8px;
+}
+
+footer p {
+    font-size: 20px;
+    line-height: 1.4;
+    margin-bottom: 0;
+}
+
+/* =========================================================
+   TABLET RESPONSIVE BREAKPOINT (1024PX)
+========================================================= */
+@media (max-width: 1024px) {
+    .container {
+        padding-inline: 40px;
+        padding-top: 50px;
+    }
+
+    .hero {
+        margin-bottom: 150px;
+        gap: 15px;
+    }
+
+    .hero-left h2, .hero-right h2 {
+        font-size: 64px;
+    }
+
+    .small-title {
+        font-size: 36px !important;
+    }
+
+    .lips-image {
+        max-width: 300px;
+    }
+
+    .illustration {
+        transform: scale(2.2) translateY(-20%);
+    }
+    
+    .about-text {
+        width: 50%;
+        transform: translateY(380px);
+    }
+
+    .about-text h2 {
+        font-size: 36px;
+    }
+
+    .about-text p {
+        font-size: 20px;
+    }
+
+    .about-section {
+        gap: 30px;
+        margin-bottom: 450px;
+        scroll-margin-top: 80px;
+    }
+
+    .showcase-item {
+        width: 70%;
+    }
+}
+
+/* =========================================================
+   MOBILE RESPONSIVE BREAKPOINT (480PX)
+========================================================= */
+@media (max-width: 480px) {
+
+    .container {
+        padding-inline: 20px;
+        padding-top: 30px;
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+        margin-bottom: 50px;
+        align-items: flex-start;
+    }
+
+    .header-left {
+        width: 75%;
+    }
+
+    .header-left h1 {
+        font-size: 30px;
+        margin-bottom: 14px;
+        line-height: 0.95;
+    }
+
+    .header-left p {
+        font-size: 15px;
+        line-height: 1.1;
+        max-width: 220px;
+    }
+
+    .hamburger {
+        display: block;
+        font-size: 30px;
+        cursor: pointer;
+
+        /* CẬP NHẬT ĐOẠN NÀY ĐỂ NÚT HAMBURGER LUÔN ĐỨNG YÊN */
+        position: fixed;
+        top: 30px;    /* Bằng với padding-top của .container trên mobile */
+        right: 20px;  /* Bằng với padding-inline của .container trên mobile */
+        z-index: 2000; /* Nằm trên cùng, kể cả menu khi mở ra */
+        
+        background-color: rgba(5, 5, 5, 0.8);
+        padding: 0 5px;
+        border-radius: 4px;
+    }
+
+    /* ================= MOBILE MENU ================= */
+
+    .desktop-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0; /* Thay đổi từ width: 100vw thành right: 0 để fit cứng màn hình */
+        width: 100%; 
+        height: 100vh;
+        background-color: var(--bg-color);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 35px;
+        z-index: 1000;
+
+        /* Reset lại các thuộc tính fixed của desktop ở trên */
+        padding: 0;
+        backdrop-filter: none;
+
+        transform: translateY(-100%);
+        transition: transform 0.4s ease;
+    }
+    
+    .desktop-nav.active {
+        transform: translateY(0);
+    }
+
+    .desktop-nav.active {
+        transform: translateY(0);
+    }
+
+    .desktop-nav a {
+        font-size: 28px;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+        gap: 10px;
+        margin-bottom: 100px;
+    }
+
+    .hero-left h2 {
+        font-size: 34px;
+        line-height: 0.88;
+
+        transform: translateY(22%);
+        margin-right: 6px;
+    }
+
+    .hero-right h2 {
+        font-size: 34px;
+        line-height: 0.9;
+    }
+
+    .small-title {
+        font-size: 18px !important;
+        margin-top: 6px;
+    }
+
+    .lips-image {
+        max-width: 145px;
+        margin: 8px 0;
+    }
+
+    /* ================= ABOUT ================= */
+
+    .about-section {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 40px;
+
+    margin-bottom: 120px;
+
+    scroll-margin-top: 60px;
+}
+
+    .about-section > div:first-child,
+    .about-text {
+        width: 100%;
+    }
+
+    .illustration {
+        width: 100%;
+
+        transform: scale(1.15);
+
+        transform-origin: center;
+
+        display: block;
+    }
+
+    .about-text {
+        width: 90%;
+
+        transform: none; 
+    }
+
+    .about-text h2 {
+        font-size: 30px;
+
+        margin-bottom: 18px;
+
+        line-height: 0.95;
+    }
+
+    .about-text p {
+        font-size: 13px;
+
+        line-height: 1.55;
+
+        margin-bottom: 16px;
+    }
+
+    /* ================= SHOWCASE ================= */
+
+    .showcase {
+    align-items: flex-end;
+
+    margin-bottom: 60px;
+}
+
+.showcase-item {
+    width: 70%;
+
+    margin-bottom: 45px;
+}
+
+.showcase-item h3 {
+    font-size: 22px;
+
+    margin-bottom: 12px;
+
+    text-align: left;
+}
+
+.showcase-item p {
+    font-size: 11px;
+
+    line-height: 1.5;
+
+    text-align: right;
+}
+
+.showcase-image {
+    width: 100%;
+
+    margin-bottom: 12px;
+}
+
+    /* ================= FOOTER ================= */
+
+    footer {
+        padding-bottom: 40px;
+    }
+
+    footer h3 {
+        font-size: 22px;
+
+        margin-top: 22px;
+        margin-bottom: 8px;
+    }
+
+    footer p {
+        font-size: 13px;
+
+        line-height: 1.5;
+    }
+}
